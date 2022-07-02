@@ -19,7 +19,7 @@ def get_requirements_list()->List[str]:
     return This function is going to return a list which contain name 
     of libraries mentioned in requirements.txt file
     """
-    with open(REQUIREMENT_FILE_NAME) as requirement_file:
+    with open(REQUIREMENT_FILE_NAME, encoding="utf8") as requirement_file:
         return requirement_file.readlines().remove("-e .")
 
 setup(
