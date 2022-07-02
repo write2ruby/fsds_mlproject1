@@ -1,9 +1,17 @@
 from flask import Flask
+from housing.logger import logging
+from housing.exception import HousingException
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
+  try:
+    raise Exception("We are testing custom exception")
+  except Exception as e:
+    housing = HousingException(e, sys) 
+    logging.info(housing.error_message)
+    logging.info("We are testing logging module")
   return "<h1>Hello World</h1>"
 
 if __name__ == "__main__":
